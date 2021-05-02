@@ -1,0 +1,1 @@
+add_library(my_lib STATIC some_lib.cpp some_lib.h)
