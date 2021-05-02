@@ -31,7 +31,7 @@ $ sudo apt-get install clang-tidy
 $ cd <ProjectFolder>  # cd clang_tidy/
 $ mkdir build && cd build
 $ cmake ..
-$ run-clang-tidy.py -checks="*"  # or run-clang-tidy-<Version>.py
+$ run-clang-tidy.py -checks="*" > ../clang_tidy_output.txt # or run-clang-tidy-<Version>.py
 ```
 See: https://clang.llvm.org/extra/clang-tidy/ <br/>
 See: https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
