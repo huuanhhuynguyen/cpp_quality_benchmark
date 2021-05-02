@@ -1,0 +1,12 @@
+/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/ubsan/main.cpp:18:7: runtime error: shift exponent 32 is too large for 32-bit type 'int'
+/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/ubsan/main.cpp:20:16: runtime error: division by zero
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==14290==ERROR: AddressSanitizer: FPE on unknown address 0x55c5d046725f (pc 0x55c5d046725f bp 0x7ffea48bc440 sp 0x7ffea48bc420 T0)
+    #0 0x55c5d046725e in main (/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/ubsan/build/SanitizerProject+0x125e)
+    #1 0x7f3d7a7d60b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+    #2 0x55c5d046712d in _start (/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/ubsan/build/SanitizerProject+0x112d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: FPE (/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/ubsan/build/SanitizerProject+0x125e) in main
+==14290==ABORTING

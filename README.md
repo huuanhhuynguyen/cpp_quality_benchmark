@@ -35,3 +35,25 @@ $ run-clang-tidy.py -checks="*"  # or run-clang-tidy-<Version>.py
 ```
 See: https://clang.llvm.org/extra/clang-tidy/ <br/>
 See: https://www.kdab.com/clang-tidy-part-1-modernize-source-code-using-c11c14/
+
+## Address (ASAN) and Undefined Behavior (UBSAN) Sanitizers
+Enable ASAN and UBSAN (for Clang/GCC) by adding these flags to compiling and linking options
+```
+# CMakeLists.txt
+target_compile_options(SanitizerProject PRIVATE -fsanitize=address -fsanitize=undefined)
+target_link_options(SanitizerProject PRIVATE -fsanitize=address -fsanitize=undefined)
+```
+Get UBSAN (runtime error) and ASAN output
+```
+$ mkdir build && cd build
+$ cmake .. && make
+$ ./SanitizerProject 2> ../sanitizer_err.txt
+```
+Switch macro on and off for either seeing ASAN or UBSAN errors
+```
+// main.cpp:8
+#if 1
+```
+
+
+
