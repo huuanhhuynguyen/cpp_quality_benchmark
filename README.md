@@ -55,5 +55,20 @@ Switch macro on and off for either seeing ASAN or UBSAN errors
 #if 1
 ```
 
+## Thread Sanitizer
+Similar to ASAN and UBSAN, just add a compiling and linking option
+```
+# CMakeLists.txt
+target_compile_options(SanitizerProject PRIVATE -fsanitize=thread)
+target_link_options(SanitizerProject PRIVATE -fsanitize=thread)
+```
+Get thread sanitizer output
+```
+$ mkdir build && cd build
+$ cmake .. && make
+$ ./ThreadSanitizerProject 2> ../sanitizer_err.txt
+```
+
+
 
 

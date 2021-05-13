@@ -1,0 +1,37 @@
+==================
+WARNING: ThreadSanitizer: data race (pid=5402)
+  Read of size 4 at 0x7ffc0589fc6c by thread T2:
+    #0 main::{lambda()#2}::operator()() const <null> (ThreadSanitizerProject+0x23b5)
+    #1 void std::__invoke_impl<void, main::{lambda()#2}>(std::__invoke_other, main::{lambda()#2}&&) <null> (ThreadSanitizerProject+0x32c0)
+    #2 std::__invoke_result<main::{lambda()#2}>::type std::__invoke<main::{lambda()#2}>(std::__invoke_result&&, (main::{lambda()#2}&&)...) <null> (ThreadSanitizerProject+0x318d)
+    #3 void std::thread::_Invoker<std::tuple<main::{lambda()#2}> >::_M_invoke<0ul>(std::_Index_tuple<0ul>) <null> (ThreadSanitizerProject+0x3082)
+    #4 std::thread::_Invoker<std::tuple<main::{lambda()#2}> >::operator()() <null> (ThreadSanitizerProject+0x2fa5)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<main::{lambda()#2}> > >::_M_run() <null> (ThreadSanitizerProject+0x2efa)
+    #6 <null> <null> (libstdc++.so.6+0xd6d83)
+
+  Previous write of size 4 at 0x7ffc0589fc6c by thread T1:
+    #0 main::{lambda()#1}::operator()() const <null> (ThreadSanitizerProject+0x236d)
+    #1 void std::__invoke_impl<void, main::{lambda()#1}>(std::__invoke_other, main::{lambda()#1}&&) <null> (ThreadSanitizerProject+0x333a)
+    #2 std::__invoke_result<main::{lambda()#1}>::type std::__invoke<main::{lambda()#1}>(std::__invoke_result&&, (main::{lambda()#1}&&)...) <null> (ThreadSanitizerProject+0x3232)
+    #3 void std::thread::_Invoker<std::tuple<main::{lambda()#1}> >::_M_invoke<0ul>(std::_Index_tuple<0ul>) <null> (ThreadSanitizerProject+0x30de)
+    #4 std::thread::_Invoker<std::tuple<main::{lambda()#1}> >::operator()() <null> (ThreadSanitizerProject+0x3013)
+    #5 std::thread::_State_impl<std::thread::_Invoker<std::tuple<main::{lambda()#1}> > >::_M_run() <null> (ThreadSanitizerProject+0x2f4c)
+    #6 <null> <null> (libstdc++.so.6+0xd6d83)
+
+  Location is stack of main thread.
+
+  Location is global '<null>' at 0x000000000000 ([stack]+0x00000001ec6c)
+
+  Thread T2 (tid=5405, running) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x5ea99)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) <null> (libstdc++.so.6+0xd7048)
+    #2 main <null> (ThreadSanitizerProject+0x245e)
+
+  Thread T1 (tid=5404, finished) created by main thread at:
+    #0 pthread_create <null> (libtsan.so.0+0x5ea99)
+    #1 std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) <null> (libstdc++.so.6+0xd7048)
+    #2 main <null> (ThreadSanitizerProject+0x2437)
+
+SUMMARY: ThreadSanitizer: data race (/home/ngh7rng/Desktop/Workspace/cpp_quality_benchmark/thread_sanitizer/build/ThreadSanitizerProject+0x23b5) in main::{lambda()#2}::operator()() const
+==================
+ThreadSanitizer: reported 1 warnings
